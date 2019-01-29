@@ -42,9 +42,9 @@ public class SearchGyms extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        GymsModel Gyms = new GymsModel("استرونج ماشين", "سعر الاشتراك : 200 جنية");
+  //      GymsModel Gyms = new GymsModel("استرونج ماشين", "سعر الاشتراك : 200 جنية");
 
-        ref.child("Gyms").child(gymsLocationRef).push().setValue(Gyms);
+//        ref.child("Gyms").child(gymsLocationRef).push().setValue(Gyms);
 
 
         ref.child("Gyms").child(gymsLocationRef).addValueEventListener(new ValueEventListener() {
