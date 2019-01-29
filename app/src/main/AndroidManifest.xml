@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Login.AfterLogin"></activity>
+        <activity android:name=".Login.AfterLogin" />
+        <activity android:name=".Search.SearchAreas" />
+        <activity android:name=".Search.SearchGyms"></activity>
     </application>
 
 </manifest>
