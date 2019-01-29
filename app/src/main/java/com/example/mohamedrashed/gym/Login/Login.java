@@ -104,8 +104,9 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            //startActivity(new Intent(getApplicationContext(), SearchAreas.class));
-                            Toast.makeText(getApplicationContext(), "Run", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), AfterLogin.class));
+                            finish();
+                            Toast.makeText(getApplicationContext(), "اضغط اشتراك للأكمال", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

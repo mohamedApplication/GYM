@@ -14,6 +14,7 @@
         >
 
         <LinearLayout
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -45,11 +46,13 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:textColor="@color/blue_icon"
+                    android:drawableRight="@drawable/ic_money"
                     android:layout_margin="5dp"
                     android:id="@+id/fragsm_txt_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:text="السعر"
                     />
 

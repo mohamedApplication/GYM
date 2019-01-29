@@ -43,7 +43,7 @@
                 android:drawableLeft="@drawable/ic_pin_blue"
                 android:drawableRight="@drawable/right_arrow"
                 android:padding="16dp"
-                android:text="Search by area"
+                android:text="ابحث بالمنطقة"
                 android:textAllCaps="false"
                 android:textColor="#2E66FF"
                 android:textSize="16sp" />
