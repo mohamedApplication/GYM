@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNav = findViewById(R.id.navigation);
+        bottomNav.getMenu().findItem(R.id.nav_search).setChecked(true);
+
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
 
