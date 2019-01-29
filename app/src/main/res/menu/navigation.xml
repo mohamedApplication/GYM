@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/nav_search"
-        android:icon="@drawable/ic_loupe"
-        android:title="Search"/>
-
-    <item
-        android:id="@+id/nav_favorite"
-        android:icon="@drawable/ic_favorite"
-        android:title="Favorite"/>
-
-    <item
-        android:id="@+id/nav_news"
-        android:icon="@drawable/ic_newsletter"
-        android:title="News"/>
-
-    <item
-        android:id="@+id/nav_store"
-        android:icon="@drawable/ic_store"
-        android:title="Store"/>
 
     <item
         android:id="@+id/nav_account"
         android:icon="@drawable/ic_user_final"
-        android:title="Account"/>
+        android:title="شخصى"/>
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_favorite"
+        android:title="المفضله"/>
+
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/ic_newsletter"
+        android:title="الاخبار"/>
+
+    <item
+        android:id="@+id/nav_store"
+        android:icon="@drawable/ic_store"
+        android:title="المتجر"/>
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_loupe"
+        android:title="ابحث"/>
+
+
+
+
+
+
 
 </menu>

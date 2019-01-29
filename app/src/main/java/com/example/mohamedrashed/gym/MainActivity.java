@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
+        // test commit
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
@@ -52,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_search:
                             selectedFragment = new SearchFragment();
                             break;
-                            case R.id.nav_favorite:
+                        case R.id.nav_favorite:
                             selectedFragment = new FavoriteFragment();
                             break;
-                            case R.id.nav_news:
+                        case R.id.nav_news:
                             selectedFragment = new NewsFragment();
                             break;
-                            case R.id.nav_store:
+                        case R.id.nav_store:
                             selectedFragment = new StoreFragment();
                             break;
                         case R.id.nav_account:

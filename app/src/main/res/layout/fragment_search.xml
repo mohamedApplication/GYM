@@ -17,52 +17,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            android:orientation="vertical">
-
-            <ImageView
+            <TextView
+                android:textColor="#fff"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/dumbbell1"
-                android:rotation="45"
+                android:layout_height="match_parent"
+                android:text="Store Fragment"
+                android:textSize="30sp"
+                android:gravity="center"
                 />
 
-            <Button
-                android:id="@+id/search_btn"
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="550dp"
-                android:background="@drawable/round_btn"
-                android:drawableLeft="@drawable/ic_pin_blue"
-                android:drawableRight="@drawable/right_arrow"
-                android:padding="16dp"
-                android:text="Search by area"
-                android:textAllCaps="false"
-                android:textColor="#2E66FF"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/search_btn2"
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="350dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/round_btn"
-                android:drawableLeft="@drawable/ic_pin_blue"
-                android:drawableRight="@drawable/right_arrow"
-                android:padding="16dp"
-                android:text="Search by GPS"
-                android:textAllCaps="false"
-                android:textColor="#2E66FF"
-                android:textSize="16sp" />
 
 
-        </RelativeLayout>
+
+
+        </LinearLayout>
+
 
     </ScrollView>
 
