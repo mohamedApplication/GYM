@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/blue_icon"
+    tools:context=".Login.Login">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_dumbbell"
+        android:layout_marginTop="10dp"
+        android:rotation="45"
+        />
+
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="15sp"
+        app:cardCornerRadius="30dp"
+        android:elevation="5dp"
+        android:onClick="openAfterLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_google_search"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_gravity="center"
+                android:textColor="#808080"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="دخول بواسطه جوجل"
+                android:textSize="22sp"
+                android:layout_margin="10dp"
+                android:id="@+id/asm_area_name"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="15sp"
+        app:cardCornerRadius="30dp"
+        android:elevation="5dp"
+        android:onClick="afterLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_facebook" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="دخول بواسطه فيسبوك"
+                android:textColor="#3b5998"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.mohamedrashed.gym;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,6 +14,7 @@ import com.example.mohamedrashed.gym.BottomNavigation.FavoriteFragment;
 import com.example.mohamedrashed.gym.BottomNavigation.SearchFragment;
 import com.example.mohamedrashed.gym.BottomNavigation.NewsFragment;
 import com.example.mohamedrashed.gym.BottomNavigation.StoreFragment;
+import com.example.mohamedrashed.gym.Login.Login;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,4 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //startActivity(new Intent(getApplicationContext(), Login.class));
+    }
 }
