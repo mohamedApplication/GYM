@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
 
-        // Test Commit By Amir
+        // Test Commit By
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
