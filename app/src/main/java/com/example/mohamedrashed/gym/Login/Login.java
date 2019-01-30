@@ -123,6 +123,10 @@ public class Login extends AppCompatActivity {
         signInGoogle();
         //startActivity(new Intent(getApplicationContext(), AfterLogin.class));
     }
+
+    public void textRegisterNow(View view) {
+        Toast.makeText(this, "سجل الان", Toast.LENGTH_SHORT).show();
+    }
 }
 
 
