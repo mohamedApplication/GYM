@@ -74,19 +74,21 @@
                 android:textSize="18sp"
                 />
 
+            <TextView
+                android:textColor="@color/blue_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="هل نسيت كلمة المرور؟"
+                android:layout_gravity="center"
+                />
+
+
 
 
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <TextView
-        android:textColor="@color/blue_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="هل نسيت كلمة المرور؟"
-        android:layout_gravity="center"
-        />
 
     <RelativeLayout
         android:layout_marginBottom="20dp"
