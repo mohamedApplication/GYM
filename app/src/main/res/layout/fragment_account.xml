@@ -23,8 +23,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:rotation="180"
-                android:src="@drawable/right_arrow" />
+                android:src="@drawable/ic_left_arrow" />
 
 
             <TextView
@@ -68,10 +67,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
+                android:src="@drawable/ic_left_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
                 />
 
 
@@ -117,10 +115,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
+                android:src="@drawable/ic_left_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
                 />
 
 
@@ -166,10 +163,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
+                android:src="@drawable/ic_left_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
                 />
 
 

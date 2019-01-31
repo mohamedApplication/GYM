@@ -112,7 +112,6 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-
     public void afterLogin(View view) {
         finish();
         startActivity(new Intent(getApplicationContext(), AfterLogin.class));

@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_mail" />
-                            <entry key="sourceFile" value="C:\Users\Administrator\Downloads\mail.svg" />
+                            <entry key="outputName" value="ic_left_arrow" />
+                            <entry key="sourceFile" value="C:\Users\Administrator\Downloads\left-arrow.svg" />
                           </map>
                         </option>
                       </PersistentState>
