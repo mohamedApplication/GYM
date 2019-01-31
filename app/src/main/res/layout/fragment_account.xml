@@ -15,40 +15,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
-                />
+                android:layout_weight="1"
+                android:src="@drawable/ic_left_arrow" />
 
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="10"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:layout_weight="10"
                 android:gravity="center"
                 android:text="طلباتي"
                 android:textColor="#3b5998"
                 android:textSize="22sp" />
 
-
             <ImageView
-                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_cart_facing_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-                android:src="@drawable/ic_cart_facing_left" />
+
 
 
         </LinearLayout>
@@ -71,10 +67,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
+                android:src="@drawable/ic_left_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
                 />
 
 
@@ -120,10 +115,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
+                android:src="@drawable/ic_left_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
                 />
 
 
@@ -169,10 +163,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/right_arrow"
+                android:src="@drawable/ic_left_arrow"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:rotation="180"
                 />
 
 
@@ -215,6 +208,7 @@
             android:layout_marginTop="8dp">
 
             <ImageView
+                android:visibility="invisible"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -238,6 +232,7 @@
 
 
             <ImageView
+                android:rotation="180"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

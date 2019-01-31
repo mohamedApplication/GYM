@@ -112,7 +112,6 @@ public class Login extends AppCompatActivity {
                 });
     }
 
-
     public void afterLogin(View view) {
         finish();
         startActivity(new Intent(getApplicationContext(), AfterLogin.class));
@@ -122,6 +121,14 @@ public class Login extends AppCompatActivity {
     public void openAfterLogin(View view) {
         signInGoogle();
         //startActivity(new Intent(getApplicationContext(), AfterLogin.class));
+    }
+
+    public void openRegister(View view) {
+        startActivity(new Intent(getApplicationContext(), Register.class));
+    }
+
+    public void openForgetPassword(View view) {
+        startActivity(new Intent(getApplicationContext(), ForgetPassword.class));
     }
 }
 

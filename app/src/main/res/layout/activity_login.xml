@@ -6,104 +6,190 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/blue_icon"
     tools:context=".Login.Login">
 
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_dumbbell"
-        android:layout_marginTop="10dp"
+        android:layout_height="100dp"
+        android:src="@drawable/dumbbell1"
         android:rotation="45"
         />
 
-
     <android.support.v7.widget.CardView
         android:layout_margin="15sp"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="5dp"
         android:elevation="5dp"
         android:onClick="openAfterLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_google_search"
-                android:layout_gravity="center"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_margin="10dp"
+                    android:inputType="textWebEmailAddress"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/ic_avatar"
+                    android:gravity="right"
+                    android:hint="البريد الالكترونى"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_margin="10dp"
+                    android:inputType="textPassword"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/ic_lock"
+                    android:gravity="right"
+                    android:hint="كلمة المرور"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/round_btn"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="دخول"
+                android:gravity="center"
+                android:textColor="#Fff"
+                android:textSize="18sp"
                 />
 
-            <TextView
-                android:layout_gravity="center"
-                android:textColor="#808080"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="دخول بواسطه جوجل"
-                android:textSize="22sp"
-                android:layout_margin="10dp"
-                android:id="@+id/asm_area_name"
-                android:gravity="center"
-                />
+
+
+
+
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:layout_margin="15sp"
-        app:cardCornerRadius="30dp"
-        android:elevation="5dp"
-        android:onClick="afterLogin"
+
+    <TextView
+
+        android:onClick="openForgetPassword"
+        android:textColor="@color/blue_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="هل نسيت كلمة المرور؟"
+        android:layout_gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:onClick="openRegister"
+            android:textColor="@color/blue_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="سجل الان"
+            />
+
+        <TextView
+            android:gravity="left"
+            android:layout_weight="1"
+            android:id="@+id/login_no_account"
+            android:layout_centerInParent="true"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ليس لديك حساب؟" />
+
+
+
+    </LinearLayout>
+
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:layout_gravity="center"
+        android:onClick="openAfterLogin"
+        android:layout_width="240dp"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_facebook" />
-
             <TextView
+                android:drawablePadding="10dp"
+                android:layout_margin="5dp"
+                android:id="@+id/asm_area_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:drawableRight="@drawable/ic_google_search"
                 android:gravity="center"
-                android:text="دخول بواسطه فيسبوك"
-                android:textColor="#3b5998"
+                android:text="دخول بواسطه جوجل"
+                android:textColor="#808080"
                 android:textSize="22sp" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
+        android:onClick="afterLogin"
+        android:layout_gravity="center"
+        android:layout_width="240dp"
         android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:drawableLeft="@drawable/ic_google_search"
-            android:padding="16dp"
-            android:text="Connect with Google"
-            android:textAllCaps="false"
-            android:background="@drawable/sign_in_btn"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <TextView
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:text="دخول بواسطه فيسبوك"
+                android:textColor="#475992"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>
