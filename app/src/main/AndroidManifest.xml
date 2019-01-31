@@ -21,7 +21,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Login.AfterLogin" />
         <activity android:name=".Search.SearchAreas" />
-        <activity android:name=".Search.SearchGyms"></activity>
+        <activity android:name=".Search.SearchGyms" />
+        <activity android:name=".Login.Register" />
+        <activity android:name=".Login.ForgetPassword"></activity>
     </application>
 
 </manifest>

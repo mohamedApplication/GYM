@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
         android:src="@drawable/dumbbell1"
         android:rotation="45"
         />
@@ -35,7 +35,7 @@
 
                 <EditText
                     android:layout_margin="10dp"
-                    android:inputType="text"
+                    android:inputType="textWebEmailAddress"
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/ic_avatar"
                     android:gravity="right"
@@ -75,6 +75,7 @@
                 />
 
             <TextView
+                android:onClick="openForgetPassword"
                 android:textColor="@color/blue_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +102,7 @@
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/login_no_account"
             android:layout_centerInParent="true"
-            android:onClick="textRegisterNow"
+            android:onClick="openRegister"
             android:textColor="@color/blue_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -174,7 +175,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:text="دخول بواسطه فيسبوك"
-                android:textColor="#3b5998"
+                android:textColor="#475992"
                 android:textSize="22sp" />
 
         </LinearLayout>

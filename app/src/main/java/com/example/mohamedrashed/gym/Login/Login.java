@@ -124,8 +124,12 @@ public class Login extends AppCompatActivity {
         //startActivity(new Intent(getApplicationContext(), AfterLogin.class));
     }
 
-    public void textRegisterNow(View view) {
-        Toast.makeText(this, "سجل الان", Toast.LENGTH_SHORT).show();
+    public void openRegister(View view) {
+        startActivity(new Intent(getApplicationContext(), Register.class));
+    }
+
+    public void openForgetPassword(View view) {
+        startActivity(new Intent(getApplicationContext(), ForgetPassword.class));
     }
 }
 
