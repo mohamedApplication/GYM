@@ -9,14 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mohamedrashed.gym.FireBaseTools;
 import com.example.mohamedrashed.gym.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,6 +33,8 @@ public class NewsFragment extends Fragment {
 
 
     ArrayList<NewsFragment.NewsModel> NewsArray = new ArrayList<>();
+
+    ArrayList<LoveListModel> arrayListLikes = new ArrayList();
 
     NewsAdapter newsAdapter;
 
@@ -57,8 +58,9 @@ public class NewsFragment extends Fragment {
 
         NewslistView.setAdapter(newsAdapter);
 
-        //ref.child("News").push().setValue(new NewsModel("عنوان الخبر", "محتوى الخبر"));
-        //ref.child("News").child("-LX_1rCgU8UYsADBvTui").child("Likes").child("").setValue("Amir Mohammed");
+
+        //ref.child("News").child("a1").setValue(new NewsModel("عنوان الخبر", "محتوى الخبر"));
+        //ref.child("News").child("a1").child("Likes").push().setValue(new LoveListModel(user.getUid(), "Amir Mohamed"));
 
 
         ref.child("News").addValueEventListener(new ValueEventListener() {
@@ -70,6 +72,10 @@ public class NewsFragment extends Fragment {
                 for (DataSnapshot shot : dataSnapshot.getChildren()) {
                     //Toast.makeText(getActivity(),"" + shot.child("productPrice").getValue().toString(), Toast.LENGTH_SHORT).show();
                     NewsArray.add(shot.getValue(NewsModel.class));
+
+                    for (DataSnapshot snapshotLikes : shot.child("Likes").getChildren()) {
+                        arrayListLikes.add(snapshotLikes.getValue(LoveListModel.class));
+                    }
 
                 }
                 newsAdapter.notifyDataSetChanged();
@@ -129,7 +135,7 @@ public class NewsFragment extends Fragment {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
 
             // Check if an existing view is being reused, otherwise inflate the view
             View view = convertView;
@@ -139,7 +145,7 @@ public class NewsFragment extends Fragment {
             }
             // Get the {@link Word} object located at this position in the list
 
-            NewsFragment.NewsModel news = getItem(position);
+            final NewsFragment.NewsModel news = getItem(position);
 
             TextView txtTitle = view.findViewById(R.id.title);
 
@@ -151,13 +157,21 @@ public class NewsFragment extends Fragment {
 
             final ImageView imageViewLoveLike = view.findViewById(R.id.news_love_like);
 
+            if (arrayListLikes.get(position).getUID().equals(user.getUid())) {
+                imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
+            }
+
             imageViewLoveLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (imageViewLoveLike.getResources().equals(getResources().getDrawable(R.drawable.ic_like_off))) {
-                        Toast.makeText(getActivity(), "True", Toast.LENGTH_SHORT).show();
-                    }
-                    Toast.makeText(getActivity(), "" + imageViewLoveLike.getResources(), Toast.LENGTH_SHORT).show();
+//                    if (arrayListLikes.get(position).getUID().equals(user.getUid())) {
+//                        imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
+//                    }
+
+
+
+
+
                 }
             });
 
@@ -165,5 +179,35 @@ public class NewsFragment extends Fragment {
 
         }
     }
+
+    public static class LoveListModel {
+        private String UID, Name;
+
+        public LoveListModel() {
+
+        }
+
+        public LoveListModel(String UID, String name) {
+            this.UID = UID;
+            Name = name;
+        }
+
+        public String getUID() {
+            return UID;
+        }
+
+        public void setUID(String UID) {
+            this.UID = UID;
+        }
+
+        public String getName() {
+            return Name;
+        }
+
+        public void setName(String name) {
+            Name = name;
+        }
+    }
+
 }
 

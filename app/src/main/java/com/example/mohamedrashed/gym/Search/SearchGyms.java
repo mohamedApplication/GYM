@@ -1,9 +1,11 @@
 package com.example.mohamedrashed.gym.Search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.mohamedrashed.gym.GymInfo;
 import com.example.mohamedrashed.gym.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -125,6 +128,14 @@ public class SearchGyms extends AppCompatActivity {
             TextView txtGymPrice = view.findViewById(R.id.gsm_gym_price);
 
             txtGymPrice.setText(gyms.getGymPrice());
+
+            CardView cardViewGymsModel = view.findViewById(R.id.cardview_search_gyms_model);
+            cardViewGymsModel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(), GymInfo.class));
+                }
+            });
 
             return view;
         }
