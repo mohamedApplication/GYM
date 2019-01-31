@@ -18,7 +18,6 @@ import com.example.mohamedrashed.gym.Login.Login;
 
 public class MainActivity extends AppCompatActivity {
 
-    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new SearchFragment()).commit();
-
-
-            /*viewPager = (ViewPager) findViewById(R.id.viewPager);
-            ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-
-            viewPager.setAdapter(viewPagerAdapter);*/
 
         }
 
@@ -78,5 +71,4 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
 }
