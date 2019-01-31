@@ -74,14 +74,6 @@
                 android:textSize="18sp"
                 />
 
-            <TextView
-                android:onClick="openForgetPassword"
-                android:textColor="@color/blue_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="هل نسيت كلمة المرور؟"
-                android:layout_gravity="center"
-                />
 
 
 
@@ -91,17 +83,33 @@
     </android.support.v7.widget.CardView>
 
 
-    <RelativeLayout
+    <TextView
+
+        android:onClick="openForgetPassword"
+        android:textColor="@color/blue_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="هل نسيت كلمة المرور؟"
+        android:layout_gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+
+        <TextView
             android:textStyle="bold"
             android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/login_no_account"
-            android:layout_centerInParent="true"
             android:onClick="openRegister"
             android:textColor="@color/blue_icon"
             android:layout_width="wrap_content"
@@ -110,6 +118,8 @@
             />
 
         <TextView
+            android:gravity="left"
+            android:layout_weight="1"
             android:id="@+id/login_no_account"
             android:layout_centerInParent="true"
             android:textColor="#000"
@@ -119,7 +129,7 @@
 
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 
