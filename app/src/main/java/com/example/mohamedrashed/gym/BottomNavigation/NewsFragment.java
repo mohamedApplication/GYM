@@ -13,9 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.mohamedrashed.gym.FireBaseTools;
 import com.example.mohamedrashed.gym.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,12 +27,11 @@ import java.util.ArrayList;
 
 public class NewsFragment extends Fragment {
 
-    private ProgressBar progressBar ;
+    private ProgressBar progressBar;
 
 
     ArrayList<NewsFragment.NewsModel> NewsArray = new ArrayList<>();
 
-    ArrayList<LoveListModel> arrayListLikes = new ArrayList();
 
     NewsAdapter newsAdapter;
 
@@ -59,8 +56,9 @@ public class NewsFragment extends Fragment {
         NewslistView.setAdapter(newsAdapter);
 
 
-        //ref.child("News").child("a1").setValue(new NewsModel("عنوان الخبر", "محتوى الخبر"));
-        //ref.child("News").child("a1").child("Likes").push().setValue(new LoveListModel(user.getUid(), "Amir Mohamed"));
+        String FBKey = ref.push().getKey();
+
+        //ref.child("News").child(FBKey).setValue(new NewsModel("عنوان الخبر", "محتوى الخبر", FBKey));
 
 
         ref.child("News").addValueEventListener(new ValueEventListener() {
@@ -70,12 +68,17 @@ public class NewsFragment extends Fragment {
 
                 NewsArray.clear();
                 for (DataSnapshot shot : dataSnapshot.getChildren()) {
-                    //Toast.makeText(getActivity(),"" + shot.child("productPrice").getValue().toString(), Toast.LENGTH_SHORT).show();
-                    NewsArray.add(shot.getValue(NewsModel.class));
 
-                    for (DataSnapshot snapshotLikes : shot.child("Likes").getChildren()) {
-                        arrayListLikes.add(snapshotLikes.getValue(LoveListModel.class));
-                    }
+                    NewsModel newsModel = new NewsModel(
+                            shot.child("title").getValue().toString(),
+                            shot.child("subtitle").getValue().toString(),
+                            shot.child("newsKey").getValue().toString(),
+                            shot.child("Likes").getChildrenCount()
+                    );
+
+                    NewsArray.add(newsModel);
+
+
 
                 }
                 newsAdapter.notifyDataSetChanged();
@@ -98,12 +101,28 @@ public class NewsFragment extends Fragment {
 
     public static class NewsModel {
 
-        private String Title, Subtitle;
+        private String Title, Subtitle, NewsKey;
+        private long likeCounter;
 
+        public NewsModel(String title, String subtitle, String newsKey) {
+            Title = title;
+            Subtitle = subtitle;
+            NewsKey = newsKey;
+        }
 
-        public NewsModel(String title, String subtitle) {
-            this.Title = title;
-            this.Subtitle = subtitle;
+        public NewsModel(String title, String subtitle, String newsKey, long likeCounter) {
+            Title = title;
+            Subtitle = subtitle;
+            NewsKey = newsKey;
+            this.likeCounter = likeCounter;
+        }
+
+        public long getLikeCounter() {
+            return likeCounter;
+        }
+
+        public void setLikeCounter(long likeCounter) {
+            this.likeCounter = likeCounter;
         }
 
         public String getTitle() {
@@ -111,14 +130,23 @@ public class NewsFragment extends Fragment {
         }
 
         public void setTitle(String title) {
-            this.Title = title;
+            Title = title;
         }
 
         public String getSubtitle() {
             return Subtitle;
         }
 
-        public void setSubtitle(String subtitle) { Subtitle= subtitle;
+        public void setSubtitle(String subtitle) {
+            Subtitle = subtitle;
+        }
+
+        public String getNewsKey() {
+            return NewsKey;
+        }
+
+        public void setNewsKey(String newsKey) {
+            NewsKey = newsKey;
         }
 
         public NewsModel() {
@@ -155,22 +183,58 @@ public class NewsFragment extends Fragment {
 
             txtSubtitle.setText(news.getSubtitle());
 
+            TextView textViewLikesCounter = view.findViewById(R.id.new_counter_like);
+
+            textViewLikesCounter.setText(news.getLikeCounter() + " اعجاب" );
+
             final ImageView imageViewLoveLike = view.findViewById(R.id.news_love_like);
 
-            if (arrayListLikes.get(position).getUID().equals(user.getUid())) {
-                imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
-            }
+            ref.child("News").child(news.getNewsKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.child("Likes").hasChild(user.getUid())) {
+                        imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
+
+
+                    } else {
+                        imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
 
             imageViewLoveLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    if (arrayListLikes.get(position).getUID().equals(user.getUid())) {
-//                        imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
-//                    }
+                    ref.child("News").child(news.getNewsKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.child("Likes").hasChild(user.getUid())) {
+                                imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
 
+                                ref.child("News").child(news.getNewsKey()).child("Likes")
+                                        .child(user.getUid()).removeValue();
 
+                            } else {
+                                imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
 
+                                ref.child("News").child(news.getNewsKey()).child("Likes")
+                                        .child(user.getUid()).setValue(user.getUid());
+                            }
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
 
                 }
             });
@@ -180,34 +244,6 @@ public class NewsFragment extends Fragment {
         }
     }
 
-    public static class LoveListModel {
-        private String UID, Name;
-
-        public LoveListModel() {
-
-        }
-
-        public LoveListModel(String UID, String name) {
-            this.UID = UID;
-            Name = name;
-        }
-
-        public String getUID() {
-            return UID;
-        }
-
-        public void setUID(String UID) {
-            this.UID = UID;
-        }
-
-        public String getName() {
-            return Name;
-        }
-
-        public void setName(String name) {
-            Name = name;
-        }
-    }
 
 }
 
