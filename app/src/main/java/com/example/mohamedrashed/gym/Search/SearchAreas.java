@@ -1,16 +1,20 @@
 package com.example.mohamedrashed.gym.Search;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filterable;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,14 +40,21 @@ public class SearchAreas extends AppCompatActivity {
 
     AreasSearchAdapter adapter;
 
+    ListView listView;
+
+    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_areas);
 
+        progressBar = findViewById(R.id.search_area_progressbar);
+
+
         adapter = new AreasSearchAdapter(this, areas);
-        final ListView listView = findViewById(R.id.areas_search_list_view);
+        listView = findViewById(R.id.areas_search_list_view);
         listView.setAdapter(adapter);
         ref.child("Areas").addValueEventListener(new ValueEventListener() {
             @Override
@@ -60,6 +71,7 @@ public class SearchAreas extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
                 Collections.sort(areas, AreasModel.AreasSort);
+                progressBar.setVisibility(View.GONE);
 
             }
 
@@ -68,63 +80,7 @@ public class SearchAreas extends AppCompatActivity {
 
             }
         });
-
-        SearchView searchView = findViewById(R.id.sa_search_view);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-//                Query fireQuery = ref.child("Areas").orderByChild("areaName").equalTo(query);
-//                fireQuery.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        if (dataSnapshot.getValue() == null) {
-//                            Toast.makeText(SearchAreas.this, "هذه المنطقة غير متوفرة حاليا", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            ArrayList<AreasModel> areasModels = new ArrayList<>();
-//                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                                areasModels.add(snapshot.getValue(AreasModel.class));
-//                                adapter = new AreasSearchAdapter(SearchAreas.this, areasModels);
-//                                //adapter.notifyDataSetChanged();
-//                                listView.setAdapter(adapter);
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-
-                int textLength = s.length();
-                ArrayList<AreasModel> tempArrayList = new ArrayList<>();
-                for (AreasModel c : areas) {
-                    if (textLength <= c.getAreaName().length()) {
-                        if (c.getAreaName().toLowerCase().contains(s.toLowerCase())) {
-                            tempArrayList.add(c);
-
-                        }
-                    }
-                }
-                adapter = new AreasSearchAdapter(getApplicationContext(), tempArrayList);
-                adapter.notifyDataSetChanged();
-                listView.setAdapter(adapter);
-
-
-                return true;
-            }
-        });
-
-
     }
-
 
     public static class AreasModel {
 
@@ -236,4 +192,59 @@ public class SearchAreas extends AppCompatActivity {
 
     }
 
+
+    // Menu
+    private Menu menu;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.search_view_area, menu);
+
+        this.menu = menu;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+
+            SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+            SearchView search = (SearchView) menu.findItem(R.id.search_view_menu_area).getActionView();
+
+            search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
+
+            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String query) {
+
+                    int textLength = query.length();
+                    ArrayList<AreasModel> tempArrayList = new ArrayList<>();
+                    for (AreasModel c : areas) {
+                        if (textLength <= c.getAreaName().length()) {
+                            if (c.getAreaName().toLowerCase().contains(query.toLowerCase())) {
+                                tempArrayList.add(c);
+
+                            }
+                        }
+                    }
+                    adapter = new AreasSearchAdapter(getApplicationContext(), tempArrayList);
+                    adapter.notifyDataSetChanged();
+                    listView.setAdapter(adapter);
+
+
+                    return true;
+
+                }
+
+            });
+
+        }
+
+        return true;
+
+    }
 }

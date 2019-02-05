@@ -67,7 +67,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:prompt="@string/spinner_hint"
+                android:prompt="@string/spinner_gender_hint"
                 android:spinnerMode="dialog" />
 
 

@@ -24,7 +24,7 @@ public class SearchFilter extends AppCompatActivity {
     TextView txtAreaName;
     Spinner spinnerGender;
 
-    public static int spinnerPriceFilter = 800;
+    public static int spinnerPriceFilter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,16 +47,10 @@ public class SearchFilter extends AppCompatActivity {
                 int item = spinner.getSelectedItemPosition();
                 switch (item) {
                     case 0:
-                        spinnerPriceFilter = 200;
+                        spinnerPriceFilter = 0;
                         break;
                     case 1:
-                        spinnerPriceFilter = 400;
-                        break;
-                    case 2:
-                        spinnerPriceFilter = 600;
-                        break;
-                    case 3:
-                        spinnerPriceFilter = 800;
+                        spinnerPriceFilter = 1;
                         break;
                 }
 
@@ -101,11 +95,15 @@ public class SearchFilter extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         txtAreaName.setText(areaNameReturned);
-        Toast.makeText(this, "Area Name : " + areaNameReturned + " | Area Ref : " + areaRefReturned, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Area Name : " + areaNameReturned + " | Area Ref : " + areaRefReturned, Toast.LENGTH_LONG).show();
     }
 
     public void openSearchGyms(View view) {
-        startActivity(new Intent(getApplicationContext(), SearchGyms.class));
+        if (!areaNameReturned.equals("اختر منطقة")) {
+            startActivity(new Intent(getApplicationContext(), SearchGyms.class));
+        } else {
+            Toast.makeText(this, "برجاء اختيار منطقة للبحث بداخلها", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void selectArea(View view) {

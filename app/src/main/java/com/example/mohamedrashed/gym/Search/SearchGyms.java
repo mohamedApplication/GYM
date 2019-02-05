@@ -56,7 +56,7 @@ public class SearchGyms extends AppCompatActivity {
                 }
                 gymsFilterByPrice.clear();
                 for (GymsModel gymsModel : gyms) {
-                    if (gymsModel.gymPrice <= SearchFilter.spinnerPriceFilter) {
+                    if (gymsModel.gymPrice >= SearchFilter.spinnerPriceFilter) {
                         gymsFilterByPrice.add(gymsModel);
                     }
                 }
@@ -126,7 +126,12 @@ public class SearchGyms extends AppCompatActivity {
                 int gymPriceOne = gymsModelOne.getGymPrice();
                 int gymPriceTow = gymsModelTow.getGymPrice();
 
-                int result = Integer.parseInt("" + (gymPriceOne - gymPriceTow));
+                int result;
+                if (SearchFilter.spinnerPriceFilter == 0) {
+                    result = Integer.parseInt("" + (gymPriceOne - gymPriceTow));
+                } else {
+                    result = Integer.parseInt("" + (gymPriceTow - gymPriceOne));
+                }
                 return result;
 
             }

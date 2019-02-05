@@ -17,11 +17,11 @@
 
     <string name="spinner_hint">حدد سعرك</string>
 
+    <string name="spinner_gender_hint">حدد سعرك</string>
+
     <array name="travelReasons">
-        <item>اقل من 200 جنيه فالشهر</item>
-        <item>اقل من 400 جنيه فالشهر</item>
-        <item>اقل من 600 جنيه فالشهر</item>
-        <item>اقل من 800 جنيه فالشهر</item>
+        <item>من الاقل سعراً</item>
+        <item>من الاكثر سعراً</item>
     </array>
 
     <array name="spinner_gender">
