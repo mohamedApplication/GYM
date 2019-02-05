@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class SearchGyms extends AppCompatActivity {
 
@@ -31,6 +33,8 @@ public class SearchGyms extends AppCompatActivity {
 
     ArrayList<GymsModel> gyms = new ArrayList<>();
 
+    ArrayList<GymsModel> gymsFilterByPrice ;
+
     GymSearchAdapter adapter;
 
 
@@ -39,25 +43,26 @@ public class SearchGyms extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_gyms);
 
-        adapter = new GymSearchAdapter(this, gyms);
-
-        ListView listView = (ListView) findViewById(R.id.GymSearchListView);
-
-        listView.setAdapter(adapter);
-
-  //      GymsModel Gyms = new GymsModel("استرونج ماشين", "سعر الاشتراك : 200 جنية");
-
-//        ref.child("Gyms").child(gymsLocationRef).push().setValue(Gyms);
+        gymsFilterByPrice = new ArrayList<GymsModel>();
 
 
-        ref.child("Gyms").child(gymsLocationRef).addValueEventListener(new ValueEventListener() {
+        ref.child("Gyms").child(SearchFilter.areaRefReturned).child(SearchFilter.genderSelected).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 gyms.clear();
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     gyms.add(dataSnapshot1.getValue(GymsModel.class));
+
                 }
+                gymsFilterByPrice.clear();
+                for (GymsModel gymsModel : gyms) {
+                    if (gymsModel.gymPrice <= SearchFilter.spinnerPriceFilter) {
+                        gymsFilterByPrice.add(gymsModel);
+                    }
+                }
+
                 adapter.notifyDataSetChanged();
+                Collections.sort(gymsFilterByPrice, GymsModel.GymsSort);
 
 
             }
@@ -68,17 +73,32 @@ public class SearchGyms extends AppCompatActivity {
             }
         });
 
+
+
+
+        adapter = new GymSearchAdapter(this, gymsFilterByPrice);
+
+        ListView listView = (ListView) findViewById(R.id.GymSearchListView);
+
+        listView.setAdapter(adapter);
+
+  //      GymsModel Gyms = new GymsModel("استرونج ماشين", "سعر الاشتراك : 200 جنية");
+
+//        ref.child("Gyms").child(gymsLocationRef).push().setValue(Gyms);
+
+
+
     }
 
     public static class GymsModel {
-        private String gymName, gymPrice;
+        private String gymName;
+        private int gymPrice;
 
         public GymsModel() {
 
         }
 
-
-        GymsModel(String gymName, String gymPrice) {
+        public GymsModel(String gymName, int gymPrice) {
             this.gymName = gymName;
             this.gymPrice = gymPrice;
         }
@@ -91,13 +111,26 @@ public class SearchGyms extends AppCompatActivity {
             this.gymName = gymName;
         }
 
-        public String getGymPrice() {
+        public int getGymPrice() {
             return gymPrice;
         }
 
-        public void setGymPrice(String gymPrice) {
+        public void setGymPrice(int gymPrice) {
             this.gymPrice = gymPrice;
         }
+
+        public static Comparator<GymsModel> GymsSort = new Comparator<GymsModel>() {
+
+            @Override
+            public int compare(GymsModel gymsModelOne, GymsModel gymsModelTow) {
+                int gymPriceOne = gymsModelOne.getGymPrice();
+                int gymPriceTow = gymsModelTow.getGymPrice();
+
+                int result = Integer.parseInt("" + (gymPriceOne - gymPriceTow));
+                return result;
+
+            }
+        };
     }
 
     class GymSearchAdapter extends ArrayAdapter<GymsModel> {
@@ -127,7 +160,7 @@ public class SearchGyms extends AppCompatActivity {
 
             TextView txtGymPrice = view.findViewById(R.id.gsm_gym_price);
 
-            txtGymPrice.setText(gyms.getGymPrice());
+            txtGymPrice.setText(gyms.getGymPrice() + " جنية شهرياً");
 
             CardView cardViewGymsModel = view.findViewById(R.id.cardview_search_gyms_model);
             cardViewGymsModel.setOnClickListener(new View.OnClickListener() {

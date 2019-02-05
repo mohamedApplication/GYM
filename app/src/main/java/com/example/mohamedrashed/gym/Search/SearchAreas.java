@@ -214,11 +214,11 @@ public class SearchAreas extends AppCompatActivity {
             txtGymName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Toast.makeText(SearchAreas.this, "" + areas.getAreaRef(), Toast.LENGTH_SHORT).show();
-                    FireBaseTools.visits("Areas", areas.getAreaRef());
+                    //FireBaseTools.visits("Areas", areas.getAreaRef());
                     //TestAreasToGyms.childFromSearchArea = areas.getAreaRef();
-                    SearchGyms.gymsLocationRef = areas.getAreaRef();
-                    startActivity(new Intent(getContext(), SearchGyms.class));
+                    SearchFilter.areaNameReturned = areas.getAreaName();
+                    SearchFilter.areaRefReturned = areas.getAreaRef();
+                    finish();
                 }
             });
 

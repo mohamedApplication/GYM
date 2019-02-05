@@ -43,6 +43,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng egypt = new LatLng(30.082842,31.2878537);
         mMap.addMarker(new MarkerOptions().position(egypt).title("Marker in Egypt"));
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(egypt));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(egypt, 17));
     }
 }

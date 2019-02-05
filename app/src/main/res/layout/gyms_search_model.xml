@@ -33,7 +33,7 @@
                     android:gravity="right"
                     android:textColor="@color/blue_icon"
                     android:textSize="25sp"
-                    tools:text="Gym Name" />
+                    android:text="استرونج ماشين" />
 
                 <ImageView
                     android:layout_width="40dp"
@@ -57,7 +57,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="9"
                     android:textSize="18sp"
-                    tools:text="سعر الاشتراك : 200 جنيه" />
+                    android:text="سعر الاشتراك : 200 جنيه" />
 
                 <ImageView
                     android:layout_width="wrap_content"

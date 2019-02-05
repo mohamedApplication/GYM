@@ -130,6 +130,8 @@ public class Login extends AppCompatActivity {
     public void openForgetPassword(View view) {
         startActivity(new Intent(getApplicationContext(), ForgetPassword.class));
     }
+
+
 }
 
 

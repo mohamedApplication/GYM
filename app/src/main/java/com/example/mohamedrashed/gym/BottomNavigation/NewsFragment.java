@@ -186,58 +186,58 @@ public class NewsFragment extends Fragment {
             TextView textViewLikesCounter = view.findViewById(R.id.new_counter_like);
 
             textViewLikesCounter.setText(news.getLikeCounter() + " اعجاب" );
-
-            final ImageView imageViewLoveLike = view.findViewById(R.id.news_love_like);
-
-            ref.child("News").child(news.getNewsKey()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.child("Likes").hasChild(user.getUid())) {
-                        imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
-
-
-                    } else {
-                        imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
-
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-
-
-            imageViewLoveLike.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ref.child("News").child(news.getNewsKey()).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.child("Likes").hasChild(user.getUid())) {
-                                imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
-
-                                ref.child("News").child(news.getNewsKey()).child("Likes")
-                                        .child(user.getUid()).removeValue();
-
-                            } else {
-                                imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
-
-                                ref.child("News").child(news.getNewsKey()).child("Likes")
-                                        .child(user.getUid()).setValue(user.getUid());
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-
-                }
-            });
+//
+//            final ImageView imageViewLoveLike = view.findViewById(R.id.news_love_like);
+//
+//            ref.child("News").child(news.getNewsKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    if (dataSnapshot.child("Likes").hasChild(user.getUid())) {
+//                        imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
+//
+//
+//                    } else {
+//                        imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
+//
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+//
+//
+//
+//            imageViewLoveLike.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    ref.child("News").child(news.getNewsKey()).addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            if (dataSnapshot.child("Likes").hasChild(user.getUid())) {
+//                                imageViewLoveLike.setImageResource(R.drawable.ic_like_off);
+//
+//                                ref.child("News").child(news.getNewsKey()).child("Likes")
+//                                        .child(user.getUid()).removeValue();
+//
+//                            } else {
+//                                imageViewLoveLike.setImageResource(R.drawable.ic_like_on);
+//
+//                                ref.child("News").child(news.getNewsKey()).child("Likes")
+//                                        .child(user.getUid()).setValue(user.getUid());
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//
+//                }
+//            });
 
             return view;
 
