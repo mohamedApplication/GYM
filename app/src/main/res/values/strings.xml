@@ -29,5 +29,12 @@
         <item>بنات</item>
         <item>ميكس</item>
     </array>
+    <string name="title_activity_main_navigation">جيمك</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">اسم المستخدم</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

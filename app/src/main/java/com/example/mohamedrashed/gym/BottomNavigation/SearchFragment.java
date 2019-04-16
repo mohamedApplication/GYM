@@ -13,6 +13,7 @@ import android.widget.ScrollView;
 import com.daimajia.slider.library.SliderLayout;
 import com.example.mohamedrashed.gym.R;
 import com.example.mohamedrashed.gym.Search.SearchAreas;
+import com.example.mohamedrashed.gym.Search.SearchFilter;
 
 public class SearchFragment extends Fragment {
 
@@ -35,8 +36,9 @@ public class SearchFragment extends Fragment {
         cardViewSearchByArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SearchAreas.class);
-                startActivityForResult(intent,0);
+//                Intent intent = new Intent(getActivity(), SearchAreas.class);
+//                startActivityForResult(intent,0);
+                startActivity(new Intent(getContext(), SearchFilter.class));
             }
         });
 

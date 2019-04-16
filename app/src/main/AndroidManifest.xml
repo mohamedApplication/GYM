@@ -17,14 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Search.SearchFilter"
-            android:label="@string/app_name">
+            android:name=".MainNavigation"
+            android:label="@string/title_activity_main_navigation"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"></activity>
         <activity android:name=".Login.AfterLogin" />
         <activity android:name=".Search.SearchAreas" />
         <activity android:name=".Search.SearchGyms" />
@@ -47,8 +51,8 @@
         <activity
             android:name=".Maps.MapsActivity"
             android:label="@string/title_activity_maps" />
-
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Search.SearchFilter" />
+        <activity android:name=".Admin.AddGym"></activity>
     </application>
 
 </manifest>

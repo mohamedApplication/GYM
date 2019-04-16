@@ -19,7 +19,9 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mohamedrashed.gym.Admin.AddGym;
 import com.example.mohamedrashed.gym.FireBaseTools;
+import com.example.mohamedrashed.gym.MainNavigation;
 import com.example.mohamedrashed.gym.R;
 import com.example.mohamedrashed.gym.Search.SearchGyms;
 import com.google.firebase.database.DataSnapshot;
@@ -139,7 +141,7 @@ public class SearchAreas extends AppCompatActivity {
         };
     }
 
-    class AreasSearchAdapter extends ArrayAdapter<AreasModel> implements Filterable {
+    class AreasSearchAdapter extends ArrayAdapter<AreasModel>  {
 
 
         public AreasSearchAdapter(Context context, ArrayList<AreasModel> areas) {
@@ -172,6 +174,10 @@ public class SearchAreas extends AppCompatActivity {
                 public void onClick(View view) {
                     //FireBaseTools.visits("Areas", areas.getAreaRef());
                     //TestAreasToGyms.childFromSearchArea = areas.getAreaRef();
+                    if (MainNavigation.ADMIN != 0) {
+                        AddGym.areaChild = areas.getAreaRef();
+                        AddGym.areaName = areas.getAreaName();
+                    }
                     SearchFilter.areaNameReturned = areas.getAreaName();
                     SearchFilter.areaRefReturned = areas.getAreaRef();
                     finish();

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_loupe"
+            android:title="ابحث" />
+
+        <item
+            android:id="@+id/nav_store"
+            android:icon="@drawable/ic_store"
+            android:title="المتجر" />
+
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_newsletter"
+            android:title="الاخبار" />
+
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/ic_favorite"
+            android:title="المفضله" />
+
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_user_final"
+            android:title="شخصى" />
+    </group>
+
+    <item android:title="التواصل">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="مشاركة" />
+            <item
+                android:visible="false"
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+    <item android:title="لوحة التحكم">
+        <menu>
+            <item
+                android:visible="false"
+                android:id="@+id/nav_admin"
+                android:icon="@drawable/ic_avatar"
+                android:title="ADMIN" />
+
+        </menu>
+    </item>
+
+</menu>
